@@ -1,0 +1,18 @@
+#!/bin/sh -f
+
+if [ ! -n "$1" ]; then
+  EXTRA_OPTS=""
+else
+  EXTRA_OPTS="$*"
+fi
+
+if [ ! -n "$BARREL_SHIFTER" ]; then
+  BARREL_SHIFTER="../barrel_shifter/simple/barrel_shifter_simple.v"
+fi
+
+
+echo Using iverilog options $EXTRA_OPTS
+cmd="iverilog ${EXTRA_OPTS} alu_adder.v $BARREL_SHIFTER alu_datapath.v alu_controller.v alu.v alu_tb.v -o run_alu"
+echo $cmd
+$cmd
+./run_alu

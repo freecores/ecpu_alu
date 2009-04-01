@@ -1,0 +1,53 @@
+  always @(this_opcode)
+        begin
+          
+          // reset opcode_sel signals
+          opcode_sel    <= 'h0;
+          load_inputs   <= 'h0;
+          
+          case (this_opcode)
+            cCLR     =>
+              opcode_sel(clrALL)  <= '1'  ;
+            cADD_AB  =>
+              opcode_sel(addAB)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            cINC_A    =>
+              opcode_sel(incA)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            cSUB_AB  =>
+              opcode_sel(subAB)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            cCMP_AB  =>
+              opcode_sel(cmpAB)   <= '1';
+              load_inputs   <= '1';
+            cAND_AB  =>
+              opcode_sel(andAB)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            cOR_AB    =>
+              opcode_sel(orAB)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            cXOR_AB  =>
+              opcode_sel(xorAB)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            cCPL_B    =>
+              opcode_sel(cplB)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            cASL_AbyB  =>
+              opcode_sel(slAB)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            cASR_AbyB  =>
+              opcode_sel(srAB)   <= '1';
+              load_inputs   <= '1';
+              load_outputs   <= '1';              
+            others    =>
+              next_opcode    <= this_opcode;
+          endcase
+        end // always begin for FSM
