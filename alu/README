@@ -44,8 +44,8 @@
 # Simulating
 # ========
 #
-#   1) Run the setup.sh script
-#       ./setup.sh
+#   1) Run the setup.sh script in the top level directory
+#       source ./setup.sh
 #
 #   2) Modify sim/alu_test.txt as required (or leave as is for first time demo)
 #
